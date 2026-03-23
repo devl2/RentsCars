@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Registration</class>
+ <widget class="QWidget" name="Registration">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>393</width>
+    <height>852</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>393</width>
+    <height>852</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>393</width>
+    <height>852</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Регистрация</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#Registration {
+    background-color: #ffffff;
+    border-radius: 48px;
+}
+
+/* Статус бар */
+QLabel#status_bar {
+    color: #000000;
+    font-family: 'Cairo';
+    font-size: 17px;
+    font-weight: 500;
+}
+
+/* Заголовок Регистрация */
+QLabel#registration_title {
+    color: #000000;
+    font-family: 'Montserrat';
+    font-size: 48px;
+    font-weight: 300;
+}
+
+/* Поля ввода */
+QLineEdit {
+    border: 1.25px solid rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    padding-left: 60px;
+    font-family: 'Montserrat';
+    font-size: 25px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: transparent;
+}
+
+QLineEdit:focus {
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+QLineEdit#name_field {
+    background-image: url(:/assets/rectangle_2_1.png);
+    background-repeat: no-repeat;
+}
+
+QLineEdit#email_field {
+    background-image: url(:/assets/rectangle_1_1.png);
+    background-repeat: no-repeat;
+}
+
+QLineEdit#password_field {
+    background-image: url(:/assets/rectangle_3_1.png);
+    background-repeat: no-repeat;
+    padding-right: 60px;
+}
+
+/* Кнопка Зарегистрироваться */
+QPushButton#register_button {
+    background-image: url(:/assets/rectangle_4.png);
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Montserrat';
+    font-size: 25px;
+    font-weight: 400;
+    padding: 20px 0;
+}
+
+QPushButton#register_button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+QPushButton#register_button:pressed {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Текст &quot;Войти с помощью&quot; */
+QLabel#login_with_label {
+    color: rgba(0, 0, 0, 0.8);
+    font-family: 'Montserrat';
+    font-size: 25px;
+    font-weight: 300;
+}
+
+/* Круглые кнопки соцсетей */
+QPushButton.social_button {
+    border-radius: 24px;
+    border: none;
+    background-color: transparent;
+    min-width: 54px;
+    min-height: 54px;
+    max-width: 54px;
+    max-height: 54px;
+}
+
+QPushButton#google_button {
+    background-image: url(:/assets/ellipse_2_1.png);
+    background-repeat: no-repeat;
+}
+
+QPushButton#apple_button {
+    background-image: url(:/assets/ellipse_1_1.png);
+    background-repeat: no-repeat;
+}
+
+QPushButton#phone_button {
+    background-image: url(:/assets/ellipse_3_1.png);
+    background-repeat: no-repeat;
+}
+
+/* Индикатор дома */
+QFrame#home_indicator {
+    background-color: #000000;
+    border-radius: 100px;
+}
+
+/* Иконки в полях ввода */
+QLabel.field_icon {
+    background-color: transparent;
+    border: none;
+}
+
+/* Батарея */
+QWidget#battery_widget {
+    background-color: transparent;
+}
+
+/* Кнопка глаза для пароля */
+QPushButton#eye_button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Иконка пользователя для поля имени */
+QLabel#user_icon {
+    background-image: url(:/assets/user_icon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+/* Иконка почты для поля email */
+QLabel#email_icon {
+    background-image: url(:/assets/email_icon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 24px;
+    min-height: 24px;
+}
+
+/* Иконка замка для поля пароля */
+QLabel#lock_icon {
+    background-image: url(:/assets/lock_icon.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 24px;
+    min-height: 24px;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QWidget" name="status_bar_widget" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <layout class="QHBoxLayout" name="status_bar_layout"/>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_1">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>105</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="registration_title">
+     <property name="text">
+      <string>   Регистрация</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading</set>
+     </property>
+     <property name="margin">
+      <number>1</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>60</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QWidget" name="name_widget" native="true">
+     <layout class="QHBoxLayout" name="name_layout">
+      <item>
+       <widget class="QLineEdit" name="name_field">
+        <property name="styleSheet">
+         <string notr="true">border-radius: 30px;
+background:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(73, 85, 255, 255), 
+stop:0.985714 rgba(32, 135, 140, 255), 
+stop:1 rgba(255, 255, 255, 255));</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>Имя</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QWidget" name="email_widget" native="true">
+     <layout class="QHBoxLayout" name="email_layout">
+      <item>
+       <widget class="QLineEdit" name="email_field">
+        <property name="styleSheet">
+         <string notr="true">border-radius: 30px;
+background:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(73, 85, 255, 255), 
+stop:0.985714 rgba(32, 135, 140, 255), 
+stop:1 rgba(255, 255, 255, 255));</string>
+        </property>
+        <property name="placeholderText">
+         <string>Почта</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QWidget" name="password_widget" native="true">
+     <layout class="QHBoxLayout" name="password_layout">
+      <item>
+       <widget class="QLineEdit" name="password_field">
+        <property name="styleSheet">
+         <string notr="true">border-radius: 30px;
+background:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(73, 85, 255, 255), 
+stop:0.985714 rgba(32, 135, 140, 255), 
+stop:1 rgba(255, 255, 255, 255));</string>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string>Пароль</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_5">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>60</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QPushButton" name="register_button">
+     <property name="styleSheet">
+      <string notr="true">border-radius: 30px;
+background:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(73, 85, 255, 255), 
+stop:0.985714 rgba(32, 135, 140, 255), 
+stop:1 rgba(255, 255, 255, 255));</string>
+     </property>
+     <property name="text">
+      <string>Зарегестрироваться</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_6">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>80</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_7">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>26</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_8">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_9">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,737 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>new_car</class>
+ <widget class="QWidget" name="new_car">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>393</width>
+    <height>852</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>393</width>
+    <height>852</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>393</width>
+    <height>852</height>
+   </size>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#new_car {
+    background-color: #ffffff;
+    border-radius: 48px;
+}</string>
+  </property>
+  <widget class="QLabel" name="element2">
+   <property name="geometry">
+    <rect>
+     <x>158</x>
+     <y>66</y>
+     <width>79</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #000000;
+font-family: 'Cairo';
+font-size: 17px;
+font-weight: 500;
+line-height: 22px;</string>
+   </property>
+   <property name="text">
+    <string>Фильтры</string>
+   </property>
+  </widget>
+  <widget class="QFrame" name="element9">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>100</y>
+     <width>393</width>
+     <height>218</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #d9d9d9;
+border-radius: 20px;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="element4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>21</y>
+      <width>91</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #000000;
+font-family: 'Cairo';
+font-size: 17px;
+font-weight: 500;
+line-height: 22px;</string>
+    </property>
+    <property name="text">
+     <string>Все Марки</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="line_1_Stroke_">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>50</y>
+      <width>387</width>
+      <height>1</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #9c9c9c;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::HLine</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="audi">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>371</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="127">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="text">
+     <string>audi</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="bmw">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>371</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="127">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="text">
+     <string>bmw</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="toyota">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>84</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="WindowText">
+        <brush brushstyle="SolidPattern">
+         <color alpha="127">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Button">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+       <colorrole role="Window">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>217</red>
+          <green>217</green>
+          <blue>217</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="text">
+     <string>toyota</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="element15">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>339</y>
+     <width>393</width>
+     <height>218</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #d9d9d9;
+border-radius: 20px;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="element10">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>21</y>
+      <width>102</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #000000;
+font-family: 'Cairo';
+font-size: 17px;
+font-weight: 500;
+line-height: 22px;</string>
+    </property>
+    <property name="text">
+     <string>Все Модели</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bMW_M5">
+    <property name="geometry">
+     <rect>
+      <x>27</x>
+      <y>71</y>
+      <width>81</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #000000;
+font-family: 'Cairo';
+font-size: 17px;
+font-weight: 500;
+line-height: 22px;</string>
+    </property>
+    <property name="text">
+     <string>BMW M5</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bMW_M6">
+    <property name="geometry">
+     <rect>
+      <x>27</x>
+      <y>105</y>
+      <width>71</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #000000;
+font-family: 'Cairo';
+font-size: 17px;
+font-weight: 500;
+line-height: 22px;</string>
+    </property>
+    <property name="text">
+     <string>BMW M6</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bMW_M7">
+    <property name="geometry">
+     <rect>
+      <x>27</x>
+      <y>137</y>
+      <width>69</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #000000;
+font-family: 'Cairo';
+font-size: 17px;
+font-weight: 500;
+line-height: 22px;</string>
+    </property>
+    <property name="text">
+     <string>BMW M7</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="line_1_Stroke_1">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>50</y>
+      <width>387</width>
+      <height>1</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #9c9c9c;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::HLine</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="element17">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>565</y>
+     <width>393</width>
+     <height>218</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #d9d9d9;
+border-radius: 20px;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="element16">
+    <property name="geometry">
+     <rect>
+      <x>15</x>
+      <y>21</y>
+      <width>45</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #000000;
+font-family: 'Cairo';
+font-size: 17px;
+font-weight: 500;
+line-height: 22px;</string>
+    </property>
+    <property name="text">
+     <string>Цена</string>
+    </property>
+   </widget>
+   <widget class="QFrame" name="line_1_Stroke_2">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>50</y>
+      <width>387</width>
+      <height>1</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #9c9c9c;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::HLine</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="element21">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>645</y>
+     <width>133</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #787878;
+border-radius: 10px;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="element20">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>4</y>
+      <width>20</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #b2ffffff;
+font-family: 'Cairo';
+font-size: 17px;
+font-weight: 500;
+line-height: 22px;</string>
+    </property>
+    <property name="text">
+     <string>от</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="element19">
+   <property name="geometry">
+    <rect>
+     <x>189</x>
+     <y>645</y>
+     <width>133</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #787878;
+border-radius: 10px;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="element18">
+    <property name="geometry">
+     <rect>
+      <x>8</x>
+      <y>4</y>
+      <width>22</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #b2ffffff;
+font-family: 'Cairo';
+font-size: 17px;
+font-weight: 500;
+line-height: 22px;</string>
+    </property>
+    <property name="text">
+     <string>до</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="btn">
+   <property name="geometry">
+    <rect>
+     <x>46</x>
+     <y>762</y>
+     <width>307</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #ff4955ff, stop:1 #ff20878c);
+    border-radius: 10px;
+    color: #ffffff;
+    font-family: 'Cairo';
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 22px;
+}
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #cc4955ff, stop:1 #cc20878c);
+}</string>
+   </property>
+   <property name="text">
+    <string>Применить</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

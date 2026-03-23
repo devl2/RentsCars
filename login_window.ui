@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Login_admin</class>
+ <widget class="QWidget" name="Login_admin">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>393</width>
+    <height>852</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>393</width>
+    <height>852</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>393</width>
+    <height>852</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Вход</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#Login_admin {
+    background-color: #ffffff;
+    border-radius: 48px;
+}
+
+/* Статус бар */
+QLabel#status_bar {
+    color: #000000;
+    font-family: 'Cairo';
+    font-size: 17px;
+    font-weight: 500;
+}
+
+/* Заголовок ВХОД */
+QLabel#title_label {
+    color: rgba(0, 0, 0, 0.9);
+    font-family: 'Montserrat';
+    font-size: 48px;
+    font-weight: 300;
+}
+
+/* Текст &quot;Забыли пароль?&quot; */
+QLabel#forgot_password {
+    color: rgba(0, 0, 0, 0.8);
+    font-family: 'Montserrat';
+    font-size: 15px;
+    font-weight: 300;
+    text-decoration: underline;
+}
+
+/* Поля ввода */
+QLineEdit {
+    border: 1.25px solid rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 15px;
+    padding-left: 45px;
+    font-family: 'Montserrat';
+    font-size: 25px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: transparent;
+}
+
+QLineEdit:focus {
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+QLineEdit#email_field {
+    background-image: url(:/assets/rectangle_1_3.png);
+    background-repeat: no-repeat;
+}
+
+QLineEdit#password_field {
+    background-image: url(:/assets/rectangle_2_3.png);
+    background-repeat: no-repeat;
+}
+
+/* Кнопка Войти */
+QPushButton#login_button {
+    background-image: url(:/assets/rectangle_3_3.png);
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Montserrat';
+    font-size: 30px;
+    font-weight: 400;
+    padding: 21px 0;
+}
+
+QPushButton#login_button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+QPushButton#login_button:pressed {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Текст &quot;Войти с помощью&quot; */
+QLabel#login_with_label {
+    color: rgba(0, 0, 0, 0.8);
+    font-family: 'Montserrat';
+    font-size: 25px;
+    font-weight: 300;
+}
+
+/* Круглые кнопки соцсетей */
+QPushButton.social_button {
+    border-radius: 24px;
+    border: none;
+    background-color: transparent;
+    min-width: 54px;
+    min-height: 54px;
+    max-width: 54px;
+    max-height: 54px;
+}
+
+QPushButton#google_button {
+    background-image: url(:/assets/ellipse_2_3.png);
+    background-repeat: no-repeat;
+}
+
+QPushButton#apple_button {
+    background-image: url(:/assets/ellipse_1_3.png);
+    background-repeat: no-repeat;
+}
+
+QPushButton#phone_button {
+    background-image: url(:/assets/ellipse_3_3.png);
+    background-repeat: no-repeat;
+}
+
+/* Индикатор дома */
+QFrame#home_indicator {
+    background-color: #000000;
+    border-radius: 100px;
+}
+
+/* Иконки в полях ввода */
+QLabel#email_icon, QLabel#password_icon, QPushButton#eye_button {
+    background-color: transparent;
+    border: none;
+}
+
+/* Батарея */
+QWidget#battery_widget {
+    background-color: transparent;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QWidget" name="status_bar_widget" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <layout class="QHBoxLayout" name="status_bar_layout">
+      <item>
+       <widget class="QLabel" name="time_label">
+        <property name="text">
+         <string>9:41</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="cellular_icon">
+        <property name="pixmap">
+         <pixmap>:/assets/cellular_Connection_15.png</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="wifi_icon">
+        <property name="pixmap">
+         <pixmap>:/assets/wifi_15.png</pixmap>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_1">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>166</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="title_label">
+     <property name="text">
+      <string>ВХОД</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>65</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QWidget" name="email_widget" native="true">
+     <layout class="QVBoxLayout" name="email_layout">
+      <item>
+       <widget class="QLineEdit" name="email_field">
+        <property name="styleSheet">
+         <string notr="true">border-radius: 30px;
+background:  qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(73, 85, 255, 255), 
+stop:0.985714 rgba(32, 135, 140, 255), 
+stop:1 rgba(255, 255, 255, 255));</string>
+        </property>
+        <property name="text">
+         <string>Почта</string>
+        </property>
+        <property name="placeholderText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QWidget" name="password_widget" native="true">
+     <layout class="QVBoxLayout" name="password_layout">
+      <item>
+       <widget class="QLineEdit" name="password_field">
+        <property name="styleSheet">
+         <string notr="true">border-radius: 30px;
+background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(73, 85, 255, 255), 
+stop:0.985714 rgba(32, 135, 140, 255), 
+stop:1 rgba(255, 255, 255, 255));</string>
+        </property>
+        <property name="text">
+         <string>Пароль</string>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Normal</enum>
+        </property>
+        <property name="placeholderText">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="forgot_password">
+        <property name="text">
+         <string>Забыли пароль?</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="password_label">
+        <property name="styleSheet">
+         <string notr="true">font-family: 'Montserrat';
+font-size: 25px;
+color: rgba(255, 255, 255, 0.7);</string>
+        </property>
+        <property name="text">
+         <string>Пароль</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_5">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QPushButton" name="login_button">
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 30px;
+background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, 
+stop:0 rgba(73, 85, 255, 255), 
+stop:0.985714 rgba(32, 135, 140, 255), 
+stop:1 rgba(255, 255, 255, 255));</string>
+     </property>
+     <property name="text">
+      <string>Войти</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_6">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>112</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_7">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>26</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="bottom_image">
+     <property name="pixmap">
+      <pixmap>:/assets/element18_1.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_9">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>30</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

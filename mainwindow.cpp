@@ -1,0 +1,379 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include "databasemanager.h"
+#include "brandsdialog.h"
+#include "car.h"
+#include "user.h"
+#include "rental.h"
+
+#include <QPushButton>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QMessageBox>
+#include <QDebug>
+#include <QLabel>
+#include <QDateEdit>
+#include <QSpinBox>
+#include <QUiLoader>
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+    , m_dbManager(DatabaseManager::instance())
+    , m_brandsDialog(nullptr)
+    , m_currentUser(nullptr)
+{
+    ui->setupUi(this);
+
+    initializeDatabase();
+
+    setupConnections();
+
+    switchToPage(LOGIN_PAGE);
+
+    loadCars();
+}
+
+MainWindow::~MainWindow()
+{
+    delete m_brandsDialog;
+    delete ui;
+}
+
+void MainWindow::initializeDatabase()
+{
+    if (m_dbManager) {
+        bool initialized = m_dbManager->initialize();
+        if (!initialized) {
+            showMessage("Ошибка", "Не удалось инициализировать базу данных", true);
+        }
+    } else {
+        showMessage("Ошибка", "DatabaseManager не инициализирован", true);
+    }
+}
+
+void MainWindow::setupConnections()
+{
+    QMetaObject::connectSlotsByName(this);
+
+    QPushButton *filterBtn = findChild<QPushButton*>("filterButton");
+    if (filterBtn && !filterBtn->signalsBlocked()) {
+        connect(filterBtn, &QPushButton::clicked,
+                this, &MainWindow::on_filterButton_clicked);
+    }
+
+    QListWidget *brandList = findChild<QListWidget*>("brandList");
+    if (brandList) {
+        connect(brandList, &QListWidget::itemClicked,
+                this, &MainWindow::on_brandList_itemClicked);
+    }
+
+    QListWidget *carList = findChild<QListWidget*>("carList");
+    if (carList) {
+        connect(carList, &QListWidget::itemClicked,
+                this, &MainWindow::on_carItemClicked);
+    }
+}
+
+
+void MainWindow::on_loginButton_clicked()
+{
+    switchToPage(MAIN_PAGE);
+}
+
+void MainWindow::on_registerButton_clicked()
+{
+    switchToPage(REGISTER_PAGE);
+}
+
+void MainWindow::on_logoutButton_clicked()
+{
+    if (m_currentUser) {
+        m_currentUser->deleteLater();
+        m_currentUser = nullptr;
+    }
+    clearUserInterface();
+    switchToPage(LOGIN_PAGE);
+}
+
+void MainWindow::on_profileButton_clicked()
+{
+    if (m_currentUser) {
+        switchToPage(PROFILE_PAGE);
+    }
+}
+
+void MainWindow::on_backButton_clicked()
+{
+    switchToPage(MAIN_PAGE);
+}
+
+
+void MainWindow::on_filterButton_clicked()
+{
+    if (!m_dbManager) {
+        showMessage("Ошибка", "База данных не доступна", true);
+        return;
+    }
+
+    if (!m_brandsDialog) {
+        m_brandsDialog = new BrandsDialog(m_dbManager, this);
+        connect(m_brandsDialog, &BrandsDialog::filtersApplied,
+                this, &MainWindow::onFiltersApplied);
+    }
+
+    m_brandsDialog->exec();
+}
+
+void MainWindow::on_brandList_itemClicked(QListWidgetItem *item)
+{
+    if (!item) return;
+
+    QString brand = item->text();
+
+    if (brand == "Все Марки") {
+        loadCars();
+    } else {
+        filterCarsByBrand(brand);
+    }
+}
+
+void MainWindow::onFiltersApplied(const QStringList &brands)
+{
+    qDebug() << "Применены фильтры по брендам:" << brands;
+    filterCarsByBrands(brands);
+}
+
+
+void MainWindow::loadCars()
+{
+    if (!m_dbManager) return;
+
+    QList<Car*> cars = m_dbManager->getAllCars();
+    updateCarList(cars);
+}
+
+void MainWindow::updateCarList(const QList<Car*> &cars)
+{
+    QListWidget *carListWidget = findChild<QListWidget*>("carListWidget");
+    if (!carListWidget) {
+        carListWidget = findChild<QListWidget*>("carList");
+        if (!carListWidget) {
+            qDebug() << "Не найден виджет списка автомобилей";
+            return;
+        }
+    }
+
+    carListWidget->clear();
+
+    for (Car *car : cars) {
+        QString statusText;
+        switch (car->statusEnum()) {
+        case Car::AVAILABLE:
+            statusText = "✓ Доступен";
+            break;
+        case Car::RENTED:
+            statusText = "✗ Арендован";
+            break;
+        case Car::MAINTENANCE:
+            statusText = "🔧 На обслуживании";
+            break;
+        }
+
+        QString itemText = QString("%1 %2\n"
+                                 "Цена: %3 руб/день\n"
+                                 "Категория: %4\n"
+                                 "Статус: %5")
+                              .arg(car->brand())
+                              .arg(car->model())
+                              .arg(car->pricePerDay())
+                              .arg(car->categoryString())
+                              .arg(statusText);
+
+        QListWidgetItem *item = new QListWidgetItem(itemText, carListWidget);
+        item->setData(Qt::UserRole, car->id());
+
+        if (car->statusEnum() == Car::AVAILABLE) {
+            item->setForeground(Qt::darkGreen);
+        } else if (car->statusEnum() == Car::RENTED) {
+            item->setForeground(Qt::red);
+        } else {
+            item->setForeground(Qt::gray);
+        }
+    }
+
+    QLabel *carCountLabel = findChild<QLabel*>("carCountLabel");
+    if (carCountLabel) {
+        carCountLabel->setText(QString("Найдено автомобилей: %1").arg(cars.size()));
+    }
+}
+
+void MainWindow::filterCarsByBrand(const QString &brand)
+{
+    if (!m_dbManager) return;
+
+    QList<Car*> filteredCars = m_dbManager->searchCars(
+        brand,
+        "",
+        0.0,
+        100000.0,
+        -1
+    );
+
+    updateCarList(filteredCars);
+}
+
+void MainWindow::filterCarsByBrands(const QStringList &brands)
+{
+    if (!m_dbManager) return;
+
+    if (brands.isEmpty()) {
+        loadCars();
+        return;
+    }
+
+    QList<Car*> allCars = m_dbManager->getAllCars();
+    QList<Car*> filteredCars;
+
+    for (Car *car : allCars) {
+        if (brands.contains(car->brand())) {
+            filteredCars.append(car);
+        }
+    }
+
+    updateCarList(filteredCars);
+}
+
+void MainWindow::on_carItemClicked(QListWidgetItem *item)
+{
+    if (!item || !m_dbManager) return;
+
+    int carId = item->data(Qt::UserRole).toInt();
+    Car *car = m_dbManager->getCar(carId);
+
+    if (car) {
+        displayCarDetails(car);
+        switchToPage(CAR_DETAILS_PAGE);
+    }
+}
+
+void MainWindow::displayCarDetails(Car *car)
+{
+    if (!car) return;
+
+    QLabel *brandLabel = findChild<QLabel*>("carBrandLabel");
+    QLabel *modelLabel = findChild<QLabel*>("carModelLabel");
+    QLabel *priceLabel = findChild<QLabel*>("carPriceLabel");
+    QLabel *yearLabel = findChild<QLabel*>("carYearLabel");
+    QLabel *colorLabel = findChild<QLabel*>("carColorLabel");
+    QLabel *categoryLabel = findChild<QLabel*>("carCategoryLabel");
+    QLabel *statusLabel = findChild<QLabel*>("carStatusLabel");
+    QPushButton *rentButton = findChild<QPushButton*>("rentCarButton");
+
+    if (brandLabel) brandLabel->setText(car->brand());
+    if (modelLabel) modelLabel->setText(car->model());
+    if (priceLabel) priceLabel->setText(QString("%1 руб/день").arg(car->pricePerDay()));
+    if (yearLabel) yearLabel->setText(QString::number(car->year()));
+    if (colorLabel) colorLabel->setText(car->color());
+    if (categoryLabel) categoryLabel->setText(car->categoryString());
+    if (statusLabel) statusLabel->setText(car->statusString());
+
+    if (rentButton) {
+        rentButton->setEnabled(car->statusEnum() == Car::AVAILABLE && m_currentUser);
+        rentButton->setVisible(car->statusEnum() == Car::AVAILABLE);
+
+        rentButton->setProperty("carId", car->id());
+    }
+}
+
+void MainWindow::clearCarDetails()
+{
+    QLabel *brandLabel = findChild<QLabel*>("carBrandLabel");
+    QLabel *modelLabel = findChild<QLabel*>("carModelLabel");
+    QLabel *priceLabel = findChild<QLabel*>("carPriceLabel");
+
+    if (brandLabel) brandLabel->clear();
+    if (modelLabel) modelLabel->clear();
+    if (priceLabel) priceLabel->clear();
+}
+
+void MainWindow::setupUserInterface(User *user)
+{
+    if (!user) return;
+
+    m_currentUser = user;
+
+    QLabel *userNameLabel = findChild<QLabel*>("userNameLabel");
+    if (userNameLabel) {
+       // userNameLabel->setText(user->fullName());
+    }
+
+    QPushButton *profileBtn = findChild<QPushButton*>("profileButton");
+    QPushButton *logoutBtn = findChild<QPushButton*>("logoutButton");
+
+    if (profileBtn) profileBtn->setVisible(true);
+    if (logoutBtn) logoutBtn->setVisible(true);
+
+    updateUserRentals();
+}
+
+void MainWindow::clearUserInterface()
+{
+    QLabel *userNameLabel = findChild<QLabel*>("userNameLabel");
+    if (userNameLabel) {
+        userNameLabel->clear();
+    }
+
+    QPushButton *profileBtn = findChild<QPushButton*>("profileButton");
+    QPushButton *logoutBtn = findChild<QPushButton*>("logoutButton");
+
+    if (profileBtn) profileBtn->setVisible(false);
+    if (logoutBtn) logoutBtn->setVisible(false);
+}
+
+void MainWindow::updateUserRentals()
+{
+    if (!m_currentUser || !m_dbManager) return;
+}
+
+void MainWindow::updateAvailableCars()
+{
+    if (m_dbManager) {
+        loadCars();
+    }
+}
+
+void MainWindow::showMessage(const QString &title, const QString &message, bool isError)
+{
+    if (isError) {
+        QMessageBox::critical(this, title, message);
+    } else {
+        QMessageBox::information(this, title, message);
+    }
+}
+
+void MainWindow::switchToPage(int pageIndex)
+{
+    if (ui->stackedWidget && pageIndex >= 0 && pageIndex < ui->stackedWidget->count()) {
+        ui->stackedWidget->setCurrentIndex(pageIndex);
+
+        if (pageIndex == MAIN_PAGE) {
+            loadCars();
+        }
+    }
+}
+
+
+void MainWindow::onLoginSuccess(User *user)
+{
+    if (user) {
+        setupUserInterface(user);
+        switchToPage(MAIN_PAGE);
+        showMessage("Успех", "Авторизация прошла успешно!");
+    }
+}
+
+void MainWindow::onLoginFailed(const QString &error)
+{
+    showMessage("Ошибка авторизации", error, true);
+}
